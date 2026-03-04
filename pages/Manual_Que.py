@@ -1,43 +1,55 @@
 import streamlit as st
 import pandas as pd
 
+class Manual:
 
-st.title("Create Quiz Question")
+    def __init__(self):
+        pass
 
-#Initializing the Session to store the data in rerun
-if 'key' not in st.session_state:
-    st.session_state.key = []
+    def Manual_Que(self):
 
-# User inputs
-question_text = st.text_input("Enter Question")
-option_a = st.text_input("Option A")
-option_b = st.text_input("Option B")
-option_c = st.text_input("Option C")
-option_d = st.text_input("Option D")
+        st.title("Create Quiz Question")
 
-answer = st.selectbox("Correct Answer",["A", "B", "C", "D"])
+        #Initializing the Session to store the data in rerun
+        if 'key' not in st.session_state:
+            st.session_state.key = []
 
-if st.button("Save Question"):
+        # User inputs
+        self.question_text = st.text_input("Enter Question")
+        self.option_a = st.text_input("Option A")
+        self.option_b = st.text_input("Option B")
+        self.option_c = st.text_input("Option C")
+        self.option_d = st.text_input("Option D")
 
-    question = {
-        "question": question_text,
-        "option A": option_a,
-        "option B": option_b,
-        "option C": option_c,
-        "option D": option_d,
-        "answer": answer 
-        }
-    
-    st.session_state.key.append(question)
-    st.success("Question saved!")
-    
+        self.answer = st.selectbox("Correct Answer",["A", "B", "C", "D"])
 
-if st.session_state.key:
-    df = pd.DataFrame(st.session_state.key)
-    st.dataframe(df)
+        if st.button("Save Question"):
 
-    
-if st.button("Done"):
-    df = pd.DataFrame(st.session_state.key)
-    csv = df.to_csv(index = False)
-    st.download_button("Download you excel sheet", data=csv ,file_name= "Question_File.csv")
+            self.question = {
+                "question": self.question_text,
+                "option A": self.option_a,
+                "option B": self.option_b,
+                "option C": self.option_c,
+                "option D": self.option_d,
+                "answer": self.answer 
+                }
+            
+            st.session_state.key.append(self.question)
+            st.success("Question saved!")
+            
+
+        if st.session_state.key:
+            df = pd.DataFrame(st.session_state.key)
+            st.dataframe(df)
+
+            
+        if st.button("Done"):
+            df = pd.DataFrame(st.session_state.key)
+            csv = df.to_csv(index = False)
+            st.download_button("Download you excel sheet", data=csv ,file_name= "Question_File.csv")
+
+
+
+
+M1 = Manual()
+M1.Manual_Que()
