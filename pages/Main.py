@@ -1,12 +1,12 @@
 import streamlit as st
 class Game: 
     def __init__(self):
-        self.Game_Name = st.text_input("What is the name of your game",label_visibility="hidden")
+        print()
 
 
     def Game_name(self):
 
-        st.title(f"{self.Game_Name}",text_alignment="center")
+        st.title(f"",text_alignment="center")
 
         st.header("Questions",text_alignment="center")
 
