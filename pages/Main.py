@@ -40,10 +40,10 @@ class Game:
 
 
     def Game_name(self):
-        if self.Upload_Files():
         #self.df =  #Calling function from Upload Class in Upload_Question File 
-            self.row = self.Upload_Files().iloc[1] # made it a Panda Series so taking value in the first row only for now
+            self.df = self.Upload_Files() # made it a Panda Series so taking value in the first row only for now
             if self.df is not None:
+                self.row = self.df.iloc[0]
                 st.title(f"",text_alignment="center")
 
                 st.header("Questions",text_alignment="center")
@@ -54,10 +54,10 @@ class Game:
                 c , d =st.columns(2)
                 
                 
-                a.button(f"{self.row['Option A']}",width="stretch") #getting Value in from Option A by calling the column name
-                b.button(f"{self.row['Option B']}",width="stretch") #getting Value in from Option B by calling the column name
-                c.button(f"{self.row['Option C']}",width="stretch") #getting Value in from Option C by calling the column name
-                d.button(f"{self.row['Option D']}",width="stretch") #getting Value in from Option D by calling the column name
+                a.button(f"{self.row['option A']}",width="stretch") #getting Value in from Option A by calling the column name
+                b.button(f"{self.row['option B']}",width="stretch") #getting Value in from Option B by calling the column name
+                c.button(f"{self.row['option C']}",width="stretch") #getting Value in from Option C by calling the column name
+                d.button(f"{self.row['option D']}",width="stretch") #getting Value in from Option D by calling the column name
 
 
 
