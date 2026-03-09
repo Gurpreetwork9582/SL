@@ -43,45 +43,62 @@ class Game:
         #self.df =  #Calling function from Upload Class in Upload_Question File 
             self.df = self.Upload_Files() # made it a Panda Series so taking value in the first row only for now
             if self.df is not None:
-                self.row = self.df.iloc[0]
-                st.title(f"",text_alignment="center")
+                for i in range(len(self.df.index)):
+                    self.row = self.df.iloc[i]
+                    st.title(f"",text_alignment="center")
+                    
+
+                    st.header("Questions",text_alignment="center")
+
+                    self.Alist =[]
+                    
+                        
+
+
+                    st.subheader(f"{self.row['question']}", text_alignment="center")#getting Value in from Question by calling the column name
+                    
+                    a, b =st.columns(2)
+                    c , d =st.columns(2)
+                    
+                    
+                    self.a_click=a.button(f"{self.row['option A']}",width="stretch",key="Right_answer") #getting Value in from Option A by calling the column name
+                    self.b_click=b.button(f"{self.row['option B']}",width="stretch") #getting Value in from Option B by calling the column name
+                    self.c_click=c.button(f"{self.row['option C']}",width="stretch") #getting Value in from Option C by calling the column name
+                    self.d_click=d.button(f"{self.row['option D']}",width="stretch") #getting Value in from Option D by calling the column name
                 
+                    self.correct = self.row["answer"]
 
-                st.header("Questions",text_alignment="center")
+                    if self.a_click:
+                        if self.correct == "A":
+                            st.success("Thats Correct")
+                        else:
+                            st.error("Not Correct")
+                    elif self.b_click:
+                        if self.correct == "B":
+                            st.success("Thats Correct")
+                        else:
+                            st.error("Not Correct")
+                    elif self.c_click:
+                        if self.correct == "C":
+                            st.success("Thats Correct")
+                        else:
+                            st.error("Not Correct")
+                    else :
+                        if self.correct == "D":
+                            st.success("Thats Correct")
+                        else:
+                            st.error("Not Correct")
 
-                st.subheader(f"{self.row['question']}", text_alignment="center")#getting Value in from Question by calling the column name
 
-                a, b =st.columns(2)
-                c , d =st.columns(2)
-                
-                
-                self.a_click=a.button(f"{self.row['option A']}",width="stretch",key="Right_answer") #getting Value in from Option A by calling the column name
-                self.b_click=b.button(f"{self.row['option B']}",width="stretch") #getting Value in from Option B by calling the column name
-                self.c_click=c.button(f"{self.row['option C']}",width="stretch") #getting Value in from Option C by calling the column name
-                self.d_click=d.button(f"{self.row['option D']}",width="stretch") #getting Value in from Option D by calling the column name
-            
-                self.correct = self.row["answer"]
+                    with st.container(horizontal= True, horizontal_alignment="distribute"):
+                       self.Back= st.button("Back",icon_position="left",width="content",help="Move to the Previous question")
+                       self.forward = st.button("forward",icon_position="right",width="content",help="Move to the next question")           
 
-                if self.a_click:
-                    if self.correct == "A":
-                        st.success("Thats Correct")
-                    else:
-                        st.error("Not Correct")
-                elif self.b_click:
-                    if self.correct == "B":
-                        st.success("Thats Correct")
-                    else:
-                        st.error("Not Correct")
-                elif self.c_click:
-                    if self.correct == "C":
-                        st.success("Thats Correct")
-                    else:
-                        st.error("Not Correct")
-                else :
-                    if self.correct == "D":
-                        st.success("Thats Correct")
-                    else:
-                        st.error("Not Correct")
+                    if self.Back:
+                        continue
+                    elif self.forward:
+                        continue
 
+                            
 g1 = Game()
 g1.Game_name()

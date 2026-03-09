@@ -45,7 +45,7 @@ class Manual:
             
         st.button("Done",key="Done_key")
             
-            
+    #?? can i instead do True = button  and then make it a csv file????????
         if st.session_state['Done_key']:
             df = pd.DataFrame(st.session_state.key)
             csv = df.to_csv(index = False)
