@@ -5,8 +5,36 @@ class Manual:
 
     def __init__(self):
         pass
+    
+    
+    def Sheet(self):
+        st.title("Download Quiz Template")
+        self.df = pd.DataFrame(columns=[
+            "question",
+            "option A",
+            "option B",
+            "option C",
+            "option D",
+            "answer"
+        ])
+
+        # Convert to CSV
+        self.csv = self.df.to_csv(index=False)
+
+        # Download button
+        st.download_button(
+            label="Download CSV Template",
+            data=self.csv,
+            file_name="Quiz_Template.csv",
+            mime="text/csv"
+        )
+                
+                    
+            
 
     def Manual_Que(self):
+        
+        st.title("OR",text_alignment="center")
 
         st.title("Create Quiz Question")
 
@@ -55,4 +83,5 @@ class Manual:
 
 
 M1 = Manual()
+M1.Sheet()
 M1.Manual_Que()
