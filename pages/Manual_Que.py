@@ -4,7 +4,17 @@ import pandas as pd
 class Manual:
 
     def __init__(self):
-        pass
+         st.markdown(
+            """
+            <style>
+            .stApp {
+                background-image: url("https://www.presentationmagazine.com/images3/subtle-waves1024.jpg");
+                background-size: cover;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
     
     
     def Sheet(self):

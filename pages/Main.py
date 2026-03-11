@@ -11,7 +11,17 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 class Game: 
     def __init__(self):
        # self.Data = Upload() #Class init of Upload from Upload_Question File
-        pass
+        st.markdown(
+            """
+            <style>
+            .stApp {
+                background-image: url("https://www.presentationmagazine.com/images3/subtle-waves1024.jpg");
+                background-size: cover;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
     
     def Upload_Files(self):
         # let the user upload either a CSV or an Excel workbook
